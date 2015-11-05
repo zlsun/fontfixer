@@ -36,6 +36,7 @@ pref_sans = '''
 
     Simhei
     simsun Arial
+    Arial SimSun
     STHeiti
     microsoft yahei
     黑体
