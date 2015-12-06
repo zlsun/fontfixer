@@ -26,7 +26,7 @@ def holder(f, r):
 
 
 def force_holder(f):
-    return field(f + '-force')
+    return '/*[[{}]]*/'.format(f + '-force')
 
 
 def split(s):
@@ -84,7 +84,7 @@ def prefer(font, region):
 if __name__ == '__main__':
     for f in fonts:
         for r in regions:
-            for w in weights:
+            for w in weights[:1]:
                 p = prefer(f, r)
                 if p != f:
                     font_face(f, r, p, w)
