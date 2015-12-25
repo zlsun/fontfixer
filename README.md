@@ -1,8 +1,9 @@
 # fontfixer
 
-A python script generating a css that forces some fonts displayed as specified fonts.
+A python script generating a [Stylish](https://userstyles.org/) script.
+The script forces some fonts in web page displayed as specified fonts.
 
-## Install
+## Installation
 
 Click [here](https://userstyles.org/styles/113837/font-fixer) to install.
 
