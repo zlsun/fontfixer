@@ -5,6 +5,8 @@
 #
 # Distributed under terms of the MIT license.
 
+from __future__ import unicode_literals
+
 ranges = {
     '': (0, 0x2e7f),
     'cjk': (0x2e80, 0xffff),
@@ -42,7 +44,6 @@ pref_sans = '''
     黑体
     微软雅黑
     瀹嬩綋
-    ����
 '''
 
 pref_serif = '''

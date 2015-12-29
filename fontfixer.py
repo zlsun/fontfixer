@@ -5,9 +5,22 @@
 #
 # Distributed under terms of the MIT license.
 
+# Python 2/3 compatible
 from __future__ import print_function
-import config
+from __future__ import unicode_literals
 
+import sys
+if sys.version_info[0] < 3:
+    PY2 = True
+    PY3 = False
+else:
+    PY2 = False
+    PY3 = True
+
+if PY3:
+    basestring = str
+
+import config
 
 def field(name):
     return '"/*[[{}]]*/"'.format(name)
@@ -39,7 +52,7 @@ ranges = {k: ur(*v) for k, v in config.ranges.items()}
 pref = {}
 keep = {}
 for k, v in config.__dict__.items():
-    if '__' not in k and '_' in k:
+    if '__' not in k and '_' in k and isinstance(v, basestring):
         a, b = k.split('_')
         globals()[a][b] = split(v)
 
@@ -58,7 +71,11 @@ def font_face(font, region, holder, weight=None):
         font_weight = 'font-weight: {};'.format(weight)
         l.append(font_weight)
     n = [35, 30, 35, 20]
-    l = ['{{:{}}}'.format(i).format(j) for i, j in zip(n, l)]
+    # A hack to align chinese characters
+    gbk2latin = lambda s: s.encode('gbk').decode('latin')
+    latin2gbk = lambda s: s.encode('latin').decode('gbk')
+    fm = lambda s, a: latin2gbk(gbk2latin(s).format(gbk2latin(a)))
+    l = [fm('{{:{}}}'.format(i), j) for i, j in zip(n, l)]
     print('@font-face {{ {} }}'.format(' '.join(l)))
 
 
@@ -89,5 +106,5 @@ if __name__ == '__main__':
                 if p != f:
                     font_face(f, r, p, w)
     hr()
-    for s in 'PRE TEXTAREA CODE'.split():
+    for s in 'PRE CODE'.split():
         selector(s, 'mono')

@@ -1,15 +1,23 @@
 
+MAKE = make --no-print-directory
+
+color = \e[1;31m
+reset = \e[0m
+header = "$(color)[$(1)]$(reset) $(2)"
+
 all: fontfixer.css
-	@xclip -sel c $<
 	@cat $<
+	@-xclip -sel c $<
 
 clean:
-	$(RM) fontfixer.css
+	@echo -e $(call header,Cleanning)
+	@$(RM) fontfixer.css
 
 rebuild:
-	make --no-print-directory clean
-	make --no-print-directory
+	@$(MAKE) clean
+	@$(MAKE)
 
-fontfixer.css: fontfixer.py
-	python $< > $@
+%.css: %.py
+	@echo -e $(call header,Generating,$@)
+	@python $< > $@
 
