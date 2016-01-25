@@ -31,9 +31,7 @@ pref_sans = '''
     Palatino Linotype
     Segoe UI
     Tahoma
-    Tahoma
     Trebuchet MS
-    Verdana
     Verdana
 
     Simhei
@@ -53,6 +51,7 @@ pref_serif = '''
     Liberation Serif
     Linux Libertine
     Linux Libertine 0
+    PT Serif
     Times New Roman
     Times
     Times CY
@@ -89,7 +88,6 @@ keep_ = '''
     Candara
     Comic Sans MS
     Trebuchet MS
-    Verdana
 '''
 
 keep_cjk = '''

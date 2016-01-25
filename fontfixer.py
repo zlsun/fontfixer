@@ -23,7 +23,7 @@ if PY3:
 import config
 
 def field(name):
-    return '"/*[[{}]]*/"'.format(name)
+    return "'/*[[{}]]*/'".format(name)
 
 
 def with_region(f, r):
@@ -63,8 +63,9 @@ weights = ['', 'bold', 'italic']
 
 
 def font_face(font, region, holder, weight=None):
-    font_family = 'font-family: {};'.format(font)
-    unicode_range = 'unicode_range: {};'.format(ranges[region])
+    font = ("'{}'" if font.find(' ') != -1 else '{}').format(font)
+    font_family = "font-family: {};".format(font)
+    unicode_range = 'unicode-range: {};'.format(ranges[region])
     src = 'src: local({});'.format(holder)
     l = [font_family, unicode_range, src]
     if weight:
@@ -101,7 +102,7 @@ def prefer(font, region):
 if __name__ == '__main__':
     for f in fonts:
         for r in regions:
-            for w in weights[:1]:
+            for w in weights:
                 p = prefer(f, r)
                 if p != f:
                     font_face(f, r, p, w)
