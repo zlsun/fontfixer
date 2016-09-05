@@ -10,6 +10,9 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 import sys
+
+import config
+
 if sys.version_info[0] < 3:
     PY2 = True
     PY3 = False
@@ -20,7 +23,6 @@ else:
 if PY3:
     basestring = str
 
-import config
 
 def field(name):
     return "'/*[[{}]]*/'".format(name)
