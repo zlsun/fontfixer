@@ -32,7 +32,6 @@ pref_sans = '''
     Segoe UI
     Tahoma
     Trebuchet MS
-    Verdana
 
     Simhei
     simsun Arial

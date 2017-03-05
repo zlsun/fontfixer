@@ -104,10 +104,9 @@ def prefer(font, region):
 if __name__ == '__main__':
     for f in fonts:
         for r in regions:
-            for w in weights:
-                p = prefer(f, r)
-                if p != f:
-                    font_face(f, r, p, w)
+            p = prefer(f, r)
+            if p != f:
+                font_face(f, r, p, w)
     hr()
     for s in 'PRE CODE'.split():
         selector(s, 'mono')
